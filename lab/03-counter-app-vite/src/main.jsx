@@ -5,11 +5,12 @@ import ReactDOM from "react-dom/client";
 //import { HelloWorldApp } from './HelloWorldApp';
 import './styles.css'
 
-//import  {FirtsApp} from './FirtsApp';
-import  {CounterApp} from './CounterApp';
+import  {FirtsApp} from './FirtsApp';
+//import  {CounterApp} from './CounterApp';
 //Renderizado del compoenent
 ReactDOM.createRoot( document.getElementById('root') ).render(
     <React.StrictMode>
         <CounterApp value={ 0 }  />
+        {/*<FirtsApp title="Hola, soy vegeta" />*/}
     </React.StrictMode>
 );
