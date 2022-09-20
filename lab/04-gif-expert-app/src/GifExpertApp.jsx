@@ -1,29 +1,38 @@
 import { useState } from 'react';
 import { AddCategory } from './components/AddCategory';
+import { GifGrid } from './components/GifGrid';
 
-
-export const GifExpertApp = () => {
+export const GifExpertApp = ( { onNewCategory }) => {
+    //hook personalizado categories
     const [categories, setcategories] = useState( ['One Punch', 'Dragon ball']);
-    const onAddCategory = () => {
+    const onAddCategory = (newCategory) => {
+        if( categories.includes( newCategory ) ) return;
         //Forma  1
-        //setcategories(categories => [...categories, 'Valorant']);
+        //Usamos el operador spret ... para hacer una copia del arreglo
+        // [..Array, addNewItemInArray] 
+        setcategories([newCategory, ...categories ]);
         //Forma2
-        //setcategories( categories => [...categories, 'Valorant'] );
+        //usando speret y un call back llamdo cat o como quieras llamar lo
+        /*setcategories( cat => [...cat, 'Valorant'] );*/
     }
     return(
         <>
-        { /*titulo */ }
-        <h1>GifExpertApp</h1>
-        { /* input */ }
-        <AddCategory setcategories={ setcategories } />
-        { /* Listado de gifs */}
-        <ol>
+            <h1>GifExpertApp</h1>
+            <AddCategory 
+                /*setcategories={ setcategories } */
+                //Mejorando de manera semantica
+                /*onNewCategory={ (value) => onAddCategory(value) }*/
+                //simplificando codigo
+                onNewCategory={ onAddCategory }
+            />            
             {
-            categories.map( category => {
-                return <li key={ category }>{ category}</li>
-            })
+                categories.map( (category) => (
+                    <GifGrid 
+                        key={ category } 
+                        category={ category }
+                    />
+                ))
             }
-        </ol>
         </>
     )
 }
