@@ -1,10 +1,9 @@
 import { useState } from 'react';
-import { AddCategory } from './components/AddCategory';
-import { GifGrid } from './components/GifGrid';
+import { AddCategory, GifGrid  } from './components';
 
 export const GifExpertApp = ( { onNewCategory }) => {
     //hook personalizado categories
-    const [categories, setcategories] = useState( ['One Punch', 'Dragon ball']);
+    const [categories, setcategories] = useState( []);
     const onAddCategory = (newCategory) => {
         if( categories.includes( newCategory ) ) return;
         //Forma  1
