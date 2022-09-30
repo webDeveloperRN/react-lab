@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes  from 'prop-types';
 //onNewCategory es la prop que viene de GifExpertApp
 export const AddCategory = ( { onNewCategory }) => {
     //inputValue Valor inicial de nuestro imput (''vacio')
@@ -25,7 +26,7 @@ export const AddCategory = ( { onNewCategory }) => {
 
     return(
         /*<form onSubmit={ (event) => onSubmit(event) }>*/
-          <form onSubmit={ onSubmit } >
+          <form onSubmit={ onSubmit } aria-label="form" >
             <input 
                 type="text" 
                 placeholder="Buscar gifs"
@@ -38,3 +39,8 @@ export const AddCategory = ( { onNewCategory }) => {
         </form>
     )
 }
+
+AddCategory.propTypes = {
+    onNewCategory: PropTypes.func.isRequired,
+}
+
